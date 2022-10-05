@@ -45,238 +45,6 @@ var require_polyfills = __commonJS({
   }
 });
 
-// ../../node_modules/@tamagui/compose-refs/dist/cjs/compose-refs.js
-var require_compose_refs = __commonJS({
-  "../../node_modules/@tamagui/compose-refs/dist/cjs/compose-refs.js"(exports2, module2) {
-    "use strict";
-    var __create2 = Object.create;
-    var __defProp3 = Object.defineProperty;
-    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
-    var __getOwnPropNames3 = Object.getOwnPropertyNames;
-    var __getProtoOf2 = Object.getPrototypeOf;
-    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
-    var __export2 = /* @__PURE__ */ __name((target, all) => {
-      for (var name in all)
-        __defProp3(target, name, { get: all[name], enumerable: true });
-    }, "__export");
-    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
-      if (from && typeof from === "object" || typeof from === "function") {
-        for (let key of __getOwnPropNames3(from))
-          if (!__hasOwnProp3.call(to, key) && key !== except)
-            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
-      }
-      return to;
-    }, "__copyProps");
-    var __toESM2 = /* @__PURE__ */ __name((mod, isNodeMode, target) => (target = mod != null ? __create2(__getProtoOf2(mod)) : {}, __copyProps3(
-      isNodeMode || !mod || !mod.__esModule ? __defProp3(target, "default", { value: mod, enumerable: true }) : target,
-      mod
-    )), "__toESM");
-    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
-    var compose_refs_exports = {};
-    __export2(compose_refs_exports, {
-      composeRefs: () => composeRefs,
-      useComposedRefs: () => useComposedRefs
-    });
-    module2.exports = __toCommonJS3(compose_refs_exports);
-    var React3 = __toESM2(require("react"));
-    function setRef(ref, value) {
-      if (typeof ref === "function") {
-        ref(value);
-      } else if (ref !== null && ref !== void 0) {
-        ;
-        ref.current = value;
-      }
-    }
-    __name(setRef, "setRef");
-    function composeRefs(...refs) {
-      return (node) => refs.forEach((ref) => setRef(ref, node));
-    }
-    __name(composeRefs, "composeRefs");
-    function useComposedRefs(...refs) {
-      return React3.useCallback(composeRefs(...refs), refs);
-    }
-    __name(useComposedRefs, "useComposedRefs");
-  }
-});
-
-// ../../node_modules/@tamagui/compose-refs/dist/cjs/index.js
-var require_cjs = __commonJS({
-  "../../node_modules/@tamagui/compose-refs/dist/cjs/index.js"(exports2, module2) {
-    "use strict";
-    var __defProp3 = Object.defineProperty;
-    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
-    var __getOwnPropNames3 = Object.getOwnPropertyNames;
-    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
-    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
-      if (from && typeof from === "object" || typeof from === "function") {
-        for (let key of __getOwnPropNames3(from))
-          if (!__hasOwnProp3.call(to, key) && key !== except)
-            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
-      }
-      return to;
-    }, "__copyProps");
-    var __reExport2 = /* @__PURE__ */ __name((target, mod, secondTarget) => (__copyProps3(target, mod, "default"), secondTarget && __copyProps3(secondTarget, mod, "default")), "__reExport");
-    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
-    var src_exports2 = {};
-    module2.exports = __toCommonJS3(src_exports2);
-    __reExport2(src_exports2, require_compose_refs(), module2.exports);
-  }
-});
-
-// ../../node_modules/@tamagui/create-context/dist/cjs/create-context.js
-var require_create_context = __commonJS({
-  "../../node_modules/@tamagui/create-context/dist/cjs/create-context.js"(exports2, module2) {
-    "use strict";
-    var __create2 = Object.create;
-    var __defProp3 = Object.defineProperty;
-    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
-    var __getOwnPropNames3 = Object.getOwnPropertyNames;
-    var __getProtoOf2 = Object.getPrototypeOf;
-    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
-    var __export2 = /* @__PURE__ */ __name((target, all) => {
-      for (var name in all)
-        __defProp3(target, name, { get: all[name], enumerable: true });
-    }, "__export");
-    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
-      if (from && typeof from === "object" || typeof from === "function") {
-        for (let key of __getOwnPropNames3(from))
-          if (!__hasOwnProp3.call(to, key) && key !== except)
-            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
-      }
-      return to;
-    }, "__copyProps");
-    var __toESM2 = /* @__PURE__ */ __name((mod, isNodeMode, target) => (target = mod != null ? __create2(__getProtoOf2(mod)) : {}, __copyProps3(
-      isNodeMode || !mod || !mod.__esModule ? __defProp3(target, "default", { value: mod, enumerable: true }) : target,
-      mod
-    )), "__toESM");
-    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
-    var create_context_exports = {};
-    __export2(create_context_exports, {
-      createContext: () => createContext,
-      createContextScope: () => createContextScope
-    });
-    module2.exports = __toCommonJS3(create_context_exports);
-    var import_jsx_runtime = require("react/jsx-runtime");
-    var React3 = __toESM2(require("react"));
-    function createContext(rootComponentName, defaultContext) {
-      const Context = React3.createContext(defaultContext);
-      function Provider(props) {
-        const { children, ...context } = props;
-        const value = React3.useMemo(() => context, Object.values(context));
-        return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Context.Provider, {
-          value,
-          children
-        });
-      }
-      __name(Provider, "Provider");
-      function useContext(consumerName) {
-        const context = React3.useContext(Context);
-        if (context)
-          return context;
-        if (defaultContext !== void 0)
-          return defaultContext;
-        throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
-      }
-      __name(useContext, "useContext");
-      Provider.displayName = rootComponentName + "Provider";
-      return [Provider, useContext];
-    }
-    __name(createContext, "createContext");
-    function createContextScope(scopeName, createContextScopeDeps = []) {
-      let defaultContexts = [];
-      function createContext2(rootComponentName, defaultContext) {
-        const BaseContext = React3.createContext(defaultContext);
-        const index = defaultContexts.length;
-        defaultContexts = [...defaultContexts, defaultContext];
-        function Provider(props) {
-          const { scope, children, ...context } = props;
-          const Context = (scope == null ? void 0 : scope[scopeName][index]) || BaseContext;
-          const value = React3.useMemo(() => context, Object.values(context));
-          return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Context.Provider, {
-            value,
-            children
-          });
-        }
-        __name(Provider, "Provider");
-        function useContext(consumerName, scope) {
-          const Context = (scope == null ? void 0 : scope[scopeName][index]) || BaseContext;
-          const context = React3.useContext(Context);
-          if (context)
-            return context;
-          if (defaultContext !== void 0)
-            return defaultContext;
-          throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
-        }
-        __name(useContext, "useContext");
-        Provider.displayName = rootComponentName + "Provider";
-        return [Provider, useContext];
-      }
-      __name(createContext2, "createContext2");
-      const createScope = /* @__PURE__ */ __name(() => {
-        const scopeContexts = defaultContexts.map((defaultContext) => {
-          return React3.createContext(defaultContext);
-        });
-        return /* @__PURE__ */ __name(function useScope(scope) {
-          const contexts = (scope == null ? void 0 : scope[scopeName]) || scopeContexts;
-          return React3.useMemo(
-            () => ({ [`__scope${scopeName}`]: { ...scope, [scopeName]: contexts } }),
-            [scope, contexts]
-          );
-        }, "useScope");
-      }, "createScope");
-      createScope.scopeName = scopeName;
-      return [createContext2, composeContextScopes(createScope, ...createContextScopeDeps)];
-    }
-    __name(createContextScope, "createContextScope");
-    function composeContextScopes(...scopes) {
-      const baseScope = scopes[0];
-      if (scopes.length === 1)
-        return baseScope;
-      const createScope = /* @__PURE__ */ __name(() => {
-        const scopeHooks = scopes.map((createScope2) => ({
-          useScope: createScope2(),
-          scopeName: createScope2.scopeName
-        }));
-        return /* @__PURE__ */ __name(function useComposedScopes(overrideScopes) {
-          const nextScopes = scopeHooks.reduce((nextScopes2, { useScope, scopeName }) => {
-            const scopeProps = useScope(overrideScopes);
-            const currentScope = scopeProps[`__scope${scopeName}`];
-            return { ...nextScopes2, ...currentScope };
-          }, {});
-          return React3.useMemo(() => ({ [`__scope${baseScope.scopeName}`]: nextScopes }), [nextScopes]);
-        }, "useComposedScopes");
-      }, "createScope");
-      createScope.scopeName = baseScope.scopeName;
-      return createScope;
-    }
-    __name(composeContextScopes, "composeContextScopes");
-  }
-});
-
-// ../../node_modules/@tamagui/create-context/dist/cjs/index.js
-var require_cjs2 = __commonJS({
-  "../../node_modules/@tamagui/create-context/dist/cjs/index.js"(exports2, module2) {
-    "use strict";
-    var __defProp3 = Object.defineProperty;
-    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
-    var __getOwnPropNames3 = Object.getOwnPropertyNames;
-    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
-    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
-      if (from && typeof from === "object" || typeof from === "function") {
-        for (let key of __getOwnPropNames3(from))
-          if (!__hasOwnProp3.call(to, key) && key !== except)
-            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
-      }
-      return to;
-    }, "__copyProps");
-    var __reExport2 = /* @__PURE__ */ __name((target, mod, secondTarget) => (__copyProps3(target, mod, "default"), secondTarget && __copyProps3(secondTarget, mod, "default")), "__reExport");
-    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
-    var src_exports2 = {};
-    module2.exports = __toCommonJS3(src_exports2);
-    __reExport2(src_exports2, require_create_context(), module2.exports);
-  }
-});
-
 // ../../node_modules/@tamagui/animate-presence/dist/cjs/LayoutGroupContext.js
 var require_LayoutGroupContext = __commonJS({
   "../../node_modules/@tamagui/animate-presence/dist/cjs/LayoutGroupContext.js"(exports2, module2) {
@@ -669,7 +437,7 @@ var require_usePresence = __commonJS({
 });
 
 // ../../node_modules/@tamagui/animate-presence/dist/cjs/index.js
-var require_cjs3 = __commonJS({
+var require_cjs = __commonJS({
   "../../node_modules/@tamagui/animate-presence/dist/cjs/index.js"(exports2, module2) {
     "use strict";
     var __defProp3 = Object.defineProperty;
@@ -698,6 +466,238 @@ var require_cjs3 = __commonJS({
     __reExport2(src_exports2, require_AnimatePresence(), module2.exports);
     __reExport2(src_exports2, require_usePresence(), module2.exports);
     var import_PresenceContext = require_PresenceContext();
+  }
+});
+
+// ../../node_modules/@tamagui/compose-refs/dist/cjs/compose-refs.js
+var require_compose_refs = __commonJS({
+  "../../node_modules/@tamagui/compose-refs/dist/cjs/compose-refs.js"(exports2, module2) {
+    "use strict";
+    var __create2 = Object.create;
+    var __defProp3 = Object.defineProperty;
+    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
+    var __getOwnPropNames3 = Object.getOwnPropertyNames;
+    var __getProtoOf2 = Object.getPrototypeOf;
+    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
+    var __export2 = /* @__PURE__ */ __name((target, all) => {
+      for (var name in all)
+        __defProp3(target, name, { get: all[name], enumerable: true });
+    }, "__export");
+    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
+      if (from && typeof from === "object" || typeof from === "function") {
+        for (let key of __getOwnPropNames3(from))
+          if (!__hasOwnProp3.call(to, key) && key !== except)
+            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
+      }
+      return to;
+    }, "__copyProps");
+    var __toESM2 = /* @__PURE__ */ __name((mod, isNodeMode, target) => (target = mod != null ? __create2(__getProtoOf2(mod)) : {}, __copyProps3(
+      isNodeMode || !mod || !mod.__esModule ? __defProp3(target, "default", { value: mod, enumerable: true }) : target,
+      mod
+    )), "__toESM");
+    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
+    var compose_refs_exports = {};
+    __export2(compose_refs_exports, {
+      composeRefs: () => composeRefs,
+      useComposedRefs: () => useComposedRefs
+    });
+    module2.exports = __toCommonJS3(compose_refs_exports);
+    var React3 = __toESM2(require("react"));
+    function setRef(ref, value) {
+      if (typeof ref === "function") {
+        ref(value);
+      } else if (ref !== null && ref !== void 0) {
+        ;
+        ref.current = value;
+      }
+    }
+    __name(setRef, "setRef");
+    function composeRefs(...refs) {
+      return (node) => refs.forEach((ref) => setRef(ref, node));
+    }
+    __name(composeRefs, "composeRefs");
+    function useComposedRefs(...refs) {
+      return React3.useCallback(composeRefs(...refs), refs);
+    }
+    __name(useComposedRefs, "useComposedRefs");
+  }
+});
+
+// ../../node_modules/@tamagui/compose-refs/dist/cjs/index.js
+var require_cjs2 = __commonJS({
+  "../../node_modules/@tamagui/compose-refs/dist/cjs/index.js"(exports2, module2) {
+    "use strict";
+    var __defProp3 = Object.defineProperty;
+    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
+    var __getOwnPropNames3 = Object.getOwnPropertyNames;
+    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
+    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
+      if (from && typeof from === "object" || typeof from === "function") {
+        for (let key of __getOwnPropNames3(from))
+          if (!__hasOwnProp3.call(to, key) && key !== except)
+            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
+      }
+      return to;
+    }, "__copyProps");
+    var __reExport2 = /* @__PURE__ */ __name((target, mod, secondTarget) => (__copyProps3(target, mod, "default"), secondTarget && __copyProps3(secondTarget, mod, "default")), "__reExport");
+    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
+    var src_exports2 = {};
+    module2.exports = __toCommonJS3(src_exports2);
+    __reExport2(src_exports2, require_compose_refs(), module2.exports);
+  }
+});
+
+// ../../node_modules/@tamagui/create-context/dist/cjs/create-context.js
+var require_create_context = __commonJS({
+  "../../node_modules/@tamagui/create-context/dist/cjs/create-context.js"(exports2, module2) {
+    "use strict";
+    var __create2 = Object.create;
+    var __defProp3 = Object.defineProperty;
+    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
+    var __getOwnPropNames3 = Object.getOwnPropertyNames;
+    var __getProtoOf2 = Object.getPrototypeOf;
+    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
+    var __export2 = /* @__PURE__ */ __name((target, all) => {
+      for (var name in all)
+        __defProp3(target, name, { get: all[name], enumerable: true });
+    }, "__export");
+    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
+      if (from && typeof from === "object" || typeof from === "function") {
+        for (let key of __getOwnPropNames3(from))
+          if (!__hasOwnProp3.call(to, key) && key !== except)
+            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
+      }
+      return to;
+    }, "__copyProps");
+    var __toESM2 = /* @__PURE__ */ __name((mod, isNodeMode, target) => (target = mod != null ? __create2(__getProtoOf2(mod)) : {}, __copyProps3(
+      isNodeMode || !mod || !mod.__esModule ? __defProp3(target, "default", { value: mod, enumerable: true }) : target,
+      mod
+    )), "__toESM");
+    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
+    var create_context_exports = {};
+    __export2(create_context_exports, {
+      createContext: () => createContext,
+      createContextScope: () => createContextScope
+    });
+    module2.exports = __toCommonJS3(create_context_exports);
+    var import_jsx_runtime = require("react/jsx-runtime");
+    var React3 = __toESM2(require("react"));
+    function createContext(rootComponentName, defaultContext) {
+      const Context = React3.createContext(defaultContext);
+      function Provider(props) {
+        const { children, ...context } = props;
+        const value = React3.useMemo(() => context, Object.values(context));
+        return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Context.Provider, {
+          value,
+          children
+        });
+      }
+      __name(Provider, "Provider");
+      function useContext(consumerName) {
+        const context = React3.useContext(Context);
+        if (context)
+          return context;
+        if (defaultContext !== void 0)
+          return defaultContext;
+        throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
+      }
+      __name(useContext, "useContext");
+      Provider.displayName = rootComponentName + "Provider";
+      return [Provider, useContext];
+    }
+    __name(createContext, "createContext");
+    function createContextScope(scopeName, createContextScopeDeps = []) {
+      let defaultContexts = [];
+      function createContext2(rootComponentName, defaultContext) {
+        const BaseContext = React3.createContext(defaultContext);
+        const index = defaultContexts.length;
+        defaultContexts = [...defaultContexts, defaultContext];
+        function Provider(props) {
+          const { scope, children, ...context } = props;
+          const Context = (scope == null ? void 0 : scope[scopeName][index]) || BaseContext;
+          const value = React3.useMemo(() => context, Object.values(context));
+          return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Context.Provider, {
+            value,
+            children
+          });
+        }
+        __name(Provider, "Provider");
+        function useContext(consumerName, scope) {
+          const Context = (scope == null ? void 0 : scope[scopeName][index]) || BaseContext;
+          const context = React3.useContext(Context);
+          if (context)
+            return context;
+          if (defaultContext !== void 0)
+            return defaultContext;
+          throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
+        }
+        __name(useContext, "useContext");
+        Provider.displayName = rootComponentName + "Provider";
+        return [Provider, useContext];
+      }
+      __name(createContext2, "createContext2");
+      const createScope = /* @__PURE__ */ __name(() => {
+        const scopeContexts = defaultContexts.map((defaultContext) => {
+          return React3.createContext(defaultContext);
+        });
+        return /* @__PURE__ */ __name(function useScope(scope) {
+          const contexts = (scope == null ? void 0 : scope[scopeName]) || scopeContexts;
+          return React3.useMemo(
+            () => ({ [`__scope${scopeName}`]: { ...scope, [scopeName]: contexts } }),
+            [scope, contexts]
+          );
+        }, "useScope");
+      }, "createScope");
+      createScope.scopeName = scopeName;
+      return [createContext2, composeContextScopes(createScope, ...createContextScopeDeps)];
+    }
+    __name(createContextScope, "createContextScope");
+    function composeContextScopes(...scopes) {
+      const baseScope = scopes[0];
+      if (scopes.length === 1)
+        return baseScope;
+      const createScope = /* @__PURE__ */ __name(() => {
+        const scopeHooks = scopes.map((createScope2) => ({
+          useScope: createScope2(),
+          scopeName: createScope2.scopeName
+        }));
+        return /* @__PURE__ */ __name(function useComposedScopes(overrideScopes) {
+          const nextScopes = scopeHooks.reduce((nextScopes2, { useScope, scopeName }) => {
+            const scopeProps = useScope(overrideScopes);
+            const currentScope = scopeProps[`__scope${scopeName}`];
+            return { ...nextScopes2, ...currentScope };
+          }, {});
+          return React3.useMemo(() => ({ [`__scope${baseScope.scopeName}`]: nextScopes }), [nextScopes]);
+        }, "useComposedScopes");
+      }, "createScope");
+      createScope.scopeName = baseScope.scopeName;
+      return createScope;
+    }
+    __name(composeContextScopes, "composeContextScopes");
+  }
+});
+
+// ../../node_modules/@tamagui/create-context/dist/cjs/index.js
+var require_cjs3 = __commonJS({
+  "../../node_modules/@tamagui/create-context/dist/cjs/index.js"(exports2, module2) {
+    "use strict";
+    var __defProp3 = Object.defineProperty;
+    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
+    var __getOwnPropNames3 = Object.getOwnPropertyNames;
+    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
+    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
+      if (from && typeof from === "object" || typeof from === "function") {
+        for (let key of __getOwnPropNames3(from))
+          if (!__hasOwnProp3.call(to, key) && key !== except)
+            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
+      }
+      return to;
+    }, "__copyProps");
+    var __reExport2 = /* @__PURE__ */ __name((target, mod, secondTarget) => (__copyProps3(target, mod, "default"), secondTarget && __copyProps3(secondTarget, mod, "default")), "__reExport");
+    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
+    var src_exports2 = {};
+    module2.exports = __toCommonJS3(src_exports2);
+    __reExport2(src_exports2, require_create_context(), module2.exports);
   }
 });
 
@@ -1040,7 +1040,7 @@ var require_Dismissable = __commonJS({
     module2.exports = __toCommonJS3(Dismissable_exports);
     var import_jsx_runtime = require("react/jsx-runtime");
     var import_react_use_escape_keydown = require_dist2();
-    var import_compose_refs = require_cjs();
+    var import_compose_refs = require_cjs2();
     var import_core = require("@tamagui/core-node");
     var import_use_event = require_cjs5();
     var React3 = __toESM2(require("react"));
@@ -1332,7 +1332,7 @@ var require_FocusScope = __commonJS({
       FocusScope: () => FocusScope
     });
     module2.exports = __toCommonJS3(FocusScope_exports);
-    var import_compose_refs = require_cjs();
+    var import_compose_refs = require_cjs2();
     var import_use_event = require_cjs5();
     var React3 = __toESM2(require("react"));
     var AUTOFOCUS_ON_MOUNT = "focusScope.autoFocusOnMount";
@@ -4237,7 +4237,7 @@ var require_SheetContext = __commonJS({
       useSheetContext: () => useSheetContext
     });
     module2.exports = __toCommonJS3(SheetContext_exports);
-    var import_create_context = require_cjs2();
+    var import_create_context = require_cjs3();
     var import_SHEET_HANDLE_NAME = require_SHEET_HANDLE_NAME();
     var [createSheetContext, createSheetScope2] = (0, import_create_context.createContextScope)(import_SHEET_HANDLE_NAME.SHEET_NAME);
     var [SheetProvider, useSheetContext] = createSheetContext(
@@ -4457,7 +4457,7 @@ var require_Sheet = __commonJS({
     });
     module2.exports = __toCommonJS3(Sheet_exports);
     var import_jsx_runtime = require("react/jsx-runtime");
-    var import_compose_refs = require_cjs();
+    var import_compose_refs = require_cjs2();
     var import_core = require("@tamagui/core-node");
     var import_portal = require_cjs9();
     var import_remove_scroll = require_cjs10();
@@ -4844,9 +4844,6 @@ var require_Sheet = __commonJS({
               transform: [{ translateY: frameSize === 0 ? HIDDEN_SIZE : val }]
             };
           });
-          if (preventShown) {
-            return null;
-          }
           const AnimatedView = driver["NumberView"] ?? driver.View;
           const [isShowingInnerSheet, setIsShowingInnerSheet] = (0, import_react.useState)(false);
           const shouldHideParentSheet = !import_core.isWeb && modal && isShowingInnerSheet;
@@ -4913,6 +4910,9 @@ var require_Sheet = __commonJS({
               })
             ]
           });
+          if (preventShown) {
+            return null;
+          }
           if (modal) {
             const modalContents = /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_portal.Portal, {
               zIndex,
@@ -5361,11 +5361,11 @@ var require_Dialog = __commonJS({
     });
     module2.exports = __toCommonJS3(Dialog_exports);
     var import_jsx_runtime = require("react/jsx-runtime");
-    var import_animate_presence = require_cjs3();
+    var import_animate_presence = require_cjs();
     var import_aria_hidden = require_cjs4();
-    var import_compose_refs = require_cjs();
+    var import_compose_refs = require_cjs2();
     var import_core = require("@tamagui/core-node");
-    var import_create_context = require_cjs2();
+    var import_create_context = require_cjs3();
     var import_dismissable = require_cjs6();
     var import_focus_scope = require_cjs7();
     var import_portal = require_cjs9();
@@ -5932,9 +5932,9 @@ var require_AlertDialog = __commonJS({
     });
     module2.exports = __toCommonJS3(AlertDialog_exports);
     var import_jsx_runtime = require("react/jsx-runtime");
-    var import_compose_refs = require_cjs();
+    var import_compose_refs = require_cjs2();
     var import_core = require("@tamagui/core-node");
-    var import_create_context = require_cjs2();
+    var import_create_context = require_cjs3();
     var import_dialog = require_cjs15();
     var import_stacks = require_cjs8();
     var import_use_controllable_state = require_cjs11();
@@ -6522,7 +6522,7 @@ var require_Avatar = __commonJS({
     module2.exports = __toCommonJS3(Avatar_exports);
     var import_jsx_runtime = require("react/jsx-runtime");
     var import_core = require("@tamagui/core-node");
-    var import_create_context = require_cjs2();
+    var import_create_context = require_cjs3();
     var import_image = require_cjs17();
     var import_shapes = require_cjs18();
     var import_stacks = require_cjs8();
@@ -7289,7 +7289,7 @@ var require_getSpace = __commonJS({
     module2.exports = __toCommonJS3(getSpace_exports);
     var import_core = require("@tamagui/core-node");
     var getSpace = /* @__PURE__ */ __name((token, sizeUpOrDownBy = 0) => {
-      const spaces = (0, import_core.getTokens)().space;
+      const spaces = (0, import_core.getTokens)(true).space;
       const spaceNames = Object.keys(spaces);
       const key = spaceNames[Math.max(0, spaceNames.indexOf(String(token || "$4")) + sizeUpOrDownBy)];
       return spaces[key] || spaces["$4"];
@@ -7830,7 +7830,7 @@ var require_focusableInputHOC = __commonJS({
     });
     module2.exports = __toCommonJS3(focusableInputHOC_exports);
     var import_jsx_runtime = require("react/jsx-runtime");
-    var import_compose_refs = require_cjs();
+    var import_compose_refs = require_cjs2();
     var import_core = require("@tamagui/core-node");
     var import_react = require("react");
     var import_react2 = require("react");
@@ -7970,9 +7970,9 @@ var require_Label = __commonJS({
     });
     module2.exports = __toCommonJS3(Label_exports);
     var import_jsx_runtime = require("react/jsx-runtime");
-    var import_compose_refs = require_cjs();
+    var import_compose_refs = require_cjs2();
     var import_core = require("@tamagui/core-node");
-    var import_create_context = require_cjs2();
+    var import_create_context = require_cjs3();
     var import_focusable = require_cjs26();
     var import_text = require_cjs14();
     var React3 = __toESM2(require("react"));
@@ -10235,9 +10235,9 @@ var require_Popper = __commonJS({
     });
     module2.exports = __toCommonJS3(Popper_exports);
     var import_jsx_runtime = require("react/jsx-runtime");
-    var import_compose_refs = require_cjs();
+    var import_compose_refs = require_cjs2();
     var import_core = require("@tamagui/core-node");
-    var import_create_context = require_cjs2();
+    var import_create_context = require_cjs3();
     var import_stacks = require_cjs8();
     var React3 = __toESM2(require("react"));
     var import_floating = require_floating();
@@ -12794,11 +12794,11 @@ var require_Popover = __commonJS({
     module2.exports = __toCommonJS3(Popover_exports);
     var import_jsx_runtime = require("react/jsx-runtime");
     var import_polyfill_dev = require_polyfill_dev();
-    var import_animate_presence = require_cjs3();
+    var import_animate_presence = require_cjs();
     var import_aria_hidden = require_cjs4();
-    var import_compose_refs = require_cjs();
+    var import_compose_refs = require_cjs2();
     var import_core = require("@tamagui/core-node");
-    var import_create_context = require_cjs2();
+    var import_create_context = require_cjs3();
     var import_focus_scope = require_cjs7();
     var import_popper = require_cjs29();
     var import_portal = require_cjs9();
@@ -12862,7 +12862,7 @@ var require_Popover = __commonJS({
     var CONTENT_NAME = "PopoverContent";
     var PopoverContent = React3.forwardRef(
       (props, forwardedRef) => {
-        const { allowPinchZoom, trapFocus, disableRemoveScroll, ...contentModalProps } = props;
+        const { allowPinchZoom, trapFocus, disableRemoveScroll = true, ...contentModalProps } = props;
         const context = usePopoverInternalContext(CONTENT_NAME, props.__scopePopover);
         const contentRef = React3.useRef(null);
         const composedRefs = (0, import_compose_refs.useComposedRefs)(forwardedRef, contentRef);
@@ -12876,7 +12876,7 @@ var require_Popover = __commonJS({
             return (0, import_aria_hidden.hideOthers)(content);
         }, [context.open]);
         return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_portal.Portal, {
-          zIndex: props.zIndex,
+          zIndex: props.zIndex ?? 1e3,
           children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_core.Theme, {
             name: themeName,
             children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PopoverContentImpl, {
@@ -13197,7 +13197,7 @@ var require_Progress = __commonJS({
     module2.exports = __toCommonJS3(Progress_exports);
     var import_jsx_runtime = require("react/jsx-runtime");
     var import_core = require("@tamagui/core-node");
-    var import_create_context = require_cjs2();
+    var import_create_context = require_cjs3();
     var import_stacks = require_cjs8();
     var React3 = __toESM2(require("react"));
     var PROGRESS_NAME = "Progress";
@@ -13528,7 +13528,7 @@ var require_context = __commonJS({
     });
     module2.exports = __toCommonJS3(context_exports);
     var import_jsx_runtime = require("react/jsx-runtime");
-    var import_create_context = require_cjs2();
+    var import_create_context = require_cjs3();
     var import_constants = require_constants2();
     var [createSelectContext, createSelectScope] = (0, import_create_context.createContextScope)(import_constants.SELECT_NAME);
     var [SelectProvider, useSelectContext] = createSelectContext(import_constants.SELECT_NAME);
@@ -13978,7 +13978,7 @@ var require_SelectScrollButton = __commonJS({
     module2.exports = __toCommonJS3(SelectScrollButton_exports);
     var import_jsx_runtime = require("react/jsx-runtime");
     var import_react_dom_interactions = require_floating_ui_react_dom_interactions_umd();
-    var import_compose_refs = require_cjs();
+    var import_compose_refs = require_cjs2();
     var import_core = require("@tamagui/core-node");
     var import_stacks = require_cjs8();
     var React3 = __toESM2(require("react"));
@@ -14267,7 +14267,7 @@ var require_Select = __commonJS({
     });
     module2.exports = __toCommonJS3(Select_exports);
     var import_jsx_runtime = require("react/jsx-runtime");
-    var import_compose_refs = require_cjs();
+    var import_compose_refs = require_cjs2();
     var import_core = require("@tamagui/core-node");
     var import_core2 = require("@tamagui/core-node");
     var import_core3 = require("@tamagui/core-node");
@@ -14834,7 +14834,7 @@ var require_constants3 = __commonJS({
       useSliderOrientationContext: () => useSliderOrientationContext
     });
     module2.exports = __toCommonJS3(constants_exports);
-    var import_create_context = require_cjs2();
+    var import_create_context = require_cjs3();
     var SLIDER_NAME = "Slider";
     var [createSliderContext, createSliderScope] = (0, import_create_context.createContextScope)(SLIDER_NAME);
     var [SliderProvider, useSliderContext] = createSliderContext(SLIDER_NAME);
@@ -15069,7 +15069,6 @@ var require_SliderImpl = __commonJS({
           },
           onResponderGrant: (0, import_core.composeEventHandlers)(props.onResponderGrant, (event) => {
             const target = event.target;
-            console.log("target", target, context.thumbs.has(target), context.thumbs);
             const isStartingOnThumb = context.thumbs.has(target);
             if (import_core.isWeb && target instanceof HTMLElement) {
               if (context.thumbs.has(target)) {
@@ -15134,7 +15133,7 @@ var require_Slider = __commonJS({
     });
     module2.exports = __toCommonJS3(Slider_exports);
     var import_jsx_runtime = require("react/jsx-runtime");
-    var import_compose_refs = require_cjs();
+    var import_compose_refs = require_cjs2();
     var import_core = require("@tamagui/core-node");
     var import_helpers = require_cjs22();
     var import_stacks = require_cjs8();
@@ -15620,9 +15619,9 @@ var require_Switch = __commonJS({
     module2.exports = __toCommonJS3(Switch_exports);
     var import_jsx_runtime = require("react/jsx-runtime");
     var import_react_use_previous = require_dist3();
-    var import_compose_refs = require_cjs();
+    var import_compose_refs = require_cjs2();
     var import_core = require("@tamagui/core-node");
-    var import_create_context = require_cjs2();
+    var import_create_context = require_cjs3();
     var import_focusable = require_cjs26();
     var import_label = require_cjs27();
     var import_stacks = require_cjs8();
@@ -16848,7 +16847,7 @@ var require_Group = __commonJS({
             borderRadius,
             ...restProps
           } = (0, import_core.getExpandedShorthands)(activeProps);
-          const radius = borderRadius ?? (size ? (0, import_core.getVariableValue)((0, import_core.getTokens)().radius[size]) - 1 : void 0);
+          const radius = borderRadius ?? (size ? (0, import_core.getVariableValue)((0, import_core.getTokens)(true).radius[size]) - 1 : void 0);
           const hasRadius = radius !== void 0;
           const disablePassBorderRadius = disablePassBorderRadiusProp ?? !hasRadius;
           const childrens = import_react.Children.toArray(childrenProp);
@@ -17372,12 +17371,13 @@ var require_cjs41 = __commonJS({
     });
     module2.exports = __toCommonJS3(src_exports2);
     var import_polyfills = require_polyfills();
+    __reExport2(src_exports2, require_cjs(), module2.exports);
     __reExport2(src_exports2, require_cjs16(), module2.exports);
     __reExport2(src_exports2, require_cjs19(), module2.exports);
     __reExport2(src_exports2, require_cjs24(), module2.exports);
     __reExport2(src_exports2, require_cjs25(), module2.exports);
-    __reExport2(src_exports2, require_cjs(), module2.exports);
     __reExport2(src_exports2, require_cjs2(), module2.exports);
+    __reExport2(src_exports2, require_cjs3(), module2.exports);
     __reExport2(src_exports2, require_cjs15(), module2.exports);
     __reExport2(src_exports2, require_cjs20(), module2.exports);
     __reExport2(src_exports2, require_cjs23(), module2.exports);

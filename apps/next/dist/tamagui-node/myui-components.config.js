@@ -1683,8 +1683,9 @@ var require_Stacks = __commonJS({
         num = +val;
       }
       if (process.env.NODE_ENV === "development") {
-        if (isNaN(num))
+        if (num !== null && isNaN(num)) {
           console.warn("NaN shadow", num, val);
+        }
       }
       const [height, shadowRadius] = [Math.round(num / 4 + 1), Math.round(num / 2 + 2)];
       const shadow = {
@@ -2206,7 +2207,7 @@ var require_GorhomPortal = __commonJS({
     var PortalProvider = (0, import_react2.memo)(PortalProviderComponent);
     PortalProvider.displayName = "PortalProvider";
     var PortalHostComponent = /* @__PURE__ */ __name(({ name }) => {
-      const isServer2 = (0, import_core.useIsSSR)();
+      const isServer2 = !(0, import_core.useDidFinishSSR)();
       const state = usePortalState(name);
       const { registerHost: registerHost2, deregisterHost: deregisterHost2 } = usePortal(name);
       (0, import_react2.useEffect)(() => {
@@ -6843,13 +6844,13 @@ var require_concatClassName = __commonJS({
     });
     module2.exports = __toCommonJS3(concatClassName_exports);
     function concatClassName(_cn) {
-      const cnOrPropObjcet = arguments;
+      const args = arguments;
       const usedPrefixes = [];
       let final = "";
-      const len = cnOrPropObjcet.length;
+      const len = args.length;
       let propObjects = null;
       for (let x = len; x >= 0; x--) {
-        const cns = cnOrPropObjcet[x];
+        const cns = args[x];
         if (!cns)
           continue;
         if (!Array.isArray(cns) && typeof cns !== "string") {
@@ -7119,39 +7120,6 @@ var require_types2 = __commonJS({
   }
 });
 
-// ../../node_modules/@tamagui/helpers/dist/cjs/log.js
-var require_log = __commonJS({
-  "../../node_modules/@tamagui/helpers/dist/cjs/log.js"(exports2, module2) {
-    "use strict";
-    var __defProp3 = Object.defineProperty;
-    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
-    var __getOwnPropNames3 = Object.getOwnPropertyNames;
-    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
-    var __export2 = /* @__PURE__ */ __name((target, all) => {
-      for (var name in all)
-        __defProp3(target, name, { get: all[name], enumerable: true });
-    }, "__export");
-    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
-      if (from && typeof from === "object" || typeof from === "function") {
-        for (let key of __getOwnPropNames3(from))
-          if (!__hasOwnProp3.call(to, key) && key !== except)
-            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
-      }
-      return to;
-    }, "__copyProps");
-    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
-    var log_exports = {};
-    __export2(log_exports, {
-      log: () => log
-    });
-    module2.exports = __toCommonJS3(log_exports);
-    var log = /* @__PURE__ */ __name((...args) => {
-      console.log(...args);
-      return args[0];
-    }, "log");
-  }
-});
-
 // ../../node_modules/@tamagui/simple-hash/dist/cjs/index.js
 var require_cjs21 = __commonJS({
   "../../node_modules/@tamagui/simple-hash/dist/cjs/index.js"(exports2, module2) {
@@ -7226,7 +7194,6 @@ var require_cjs22 = __commonJS({
     __reExport2(src_exports2, require_concatClassName(), module2.exports);
     __reExport2(src_exports2, require_validStyleProps(), module2.exports);
     __reExport2(src_exports2, require_types2(), module2.exports);
-    __reExport2(src_exports2, require_log(), module2.exports);
     __reExport2(src_exports2, require_cjs21(), module2.exports);
   }
 });
@@ -8270,7 +8237,7 @@ var require_ListItem = __commonJS({
               Boolean(title || subTitle) ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_stacks.YStack, {
                 flex: 1,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Title, {
+                  noTextWrap === "all" ? title : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Title, {
                     size,
                     children: title
                   }),
@@ -8280,7 +8247,7 @@ var require_ListItem = __commonJS({
                         flex: true,
                         size: spaceSize * 0.333
                       }),
-                      typeof subTitle === "string" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Subtitle, {
+                      typeof subTitle === "string" && noTextWrap !== "all" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Subtitle, {
                         size: subtitleSize,
                         children: subTitle
                       }) : subTitle
@@ -16200,8 +16167,114 @@ var require_cjs38 = __commonJS({
   }
 });
 
-// ../../node_modules/@tamagui/use-force-update/dist/cjs/index.js
+// ../../node_modules/@tamagui/constants/dist/cjs/constants.js
+var require_constants4 = __commonJS({
+  "../../node_modules/@tamagui/constants/dist/cjs/constants.js"(exports2, module2) {
+    "use strict";
+    var __defProp3 = Object.defineProperty;
+    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
+    var __getOwnPropNames3 = Object.getOwnPropertyNames;
+    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
+    var __export2 = /* @__PURE__ */ __name((target, all) => {
+      for (var name in all)
+        __defProp3(target, name, { get: all[name], enumerable: true });
+    }, "__export");
+    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
+      if (from && typeof from === "object" || typeof from === "function") {
+        for (let key of __getOwnPropNames3(from))
+          if (!__hasOwnProp3.call(to, key) && key !== except)
+            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
+      }
+      return to;
+    }, "__copyProps");
+    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
+    var constants_exports = {};
+    __export2(constants_exports, {
+      isChrome: () => isChrome2,
+      isClient: () => isClient2,
+      isRSC: () => isRSC,
+      isServer: () => isServer2,
+      isTouchable: () => isTouchable2,
+      isWeb: () => isWeb2,
+      isWebTouchable: () => isWebTouchable2,
+      isWindowDefined: () => isWindowDefined,
+      useIsomorphicLayoutEffect: () => useIsomorphicLayoutEffect2
+    });
+    module2.exports = __toCommonJS3(constants_exports);
+    var import_react = require("react");
+    var import_meta = {};
+    var isWeb2 = process.env.TAMAGUI_TARGET === "web";
+    var isWindowDefined = typeof window !== "undefined";
+    var isServer2 = isWeb2 && !isWindowDefined;
+    var isClient2 = isWeb2 && isWindowDefined;
+    var isRSC = process.env.ENABLE_RSC ? import_meta.env ? import_meta.env.SSR : false : false;
+    var idFn = /* @__PURE__ */ __name(() => {
+    }, "idFn");
+    var useIsomorphicLayoutEffect2 = isRSC ? idFn : isServer2 ? import_react.useEffect : import_react.useLayoutEffect;
+    var isChrome2 = typeof navigator !== "undefined" && /Chrome/.test(navigator.userAgent || "");
+    var isWebTouchable2 = isClient2 && "ontouchstart" in window;
+    var isTouchable2 = !isWeb2 || isWebTouchable2;
+    if (process.env.NODE_ENV === "development") {
+      if (!process.env.TAMAGUI_TARGET) {
+        console.warn(`Must set TAMAGUI_TARGET to "web" or "native"`);
+      } else if (isClient2 && process.env.TAMAGUI_TARGET !== "web" && process.env.TAMAGUI_IGNORE_TARGET !== "1") {
+        console.warn(
+          `Must set TAMAGUI_TARGET to "web" for web apps - if you have window defined outside of the browser, set TAMAGUI_IGNORE_TARGET=1 to hide this`
+        );
+      }
+    }
+  }
+});
+
+// ../../node_modules/@tamagui/use-window-dimensions/dist/cjs/index.js
 var require_cjs39 = __commonJS({
+  "../../node_modules/@tamagui/use-window-dimensions/dist/cjs/index.js"(exports2, module2) {
+    "use strict";
+    var __defProp3 = Object.defineProperty;
+    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
+    var __getOwnPropNames3 = Object.getOwnPropertyNames;
+    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
+    var __export2 = /* @__PURE__ */ __name((target, all) => {
+      for (var name in all)
+        __defProp3(target, name, { get: all[name], enumerable: true });
+    }, "__export");
+    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
+      if (from && typeof from === "object" || typeof from === "function") {
+        for (let key of __getOwnPropNames3(from))
+          if (!__hasOwnProp3.call(to, key) && key !== except)
+            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
+      }
+      return to;
+    }, "__copyProps");
+    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
+    var src_exports2 = {};
+    __export2(src_exports2, {
+      useWindowDimensions: () => useWindowDimensions
+    });
+    module2.exports = __toCommonJS3(src_exports2);
+    var import_constants = require_constants4();
+    var import_react = require("react");
+    var import_react_native3 = require("react-native-web-lite");
+    var initialValue = {
+      fontScale: 1,
+      height: 800,
+      width: 600,
+      scale: 1
+    };
+    function useWindowDimensions() {
+      const [state, setState] = (0, import_react.useState)(initialValue);
+      const current = (0, import_react_native3.useWindowDimensions)();
+      (0, import_constants.useIsomorphicLayoutEffect)(() => {
+        setState(current);
+      }, [current.height, current.width, current.fontScale, current.scale]);
+      return state;
+    }
+    __name(useWindowDimensions, "useWindowDimensions");
+  }
+});
+
+// ../../node_modules/@tamagui/use-force-update/dist/cjs/index.js
+var require_cjs40 = __commonJS({
   "../../node_modules/@tamagui/use-force-update/dist/cjs/index.js"(exports2, module2) {
     "use strict";
     var __defProp3 = Object.defineProperty;
@@ -16229,12 +16302,10 @@ var require_cjs39 = __commonJS({
     module2.exports = __toCommonJS3(src_exports2);
     var import_react = require("react");
     var isServerSide = process.env.TAMAGUI_TARGET === "web" && typeof window === "undefined";
+    var idFn = /* @__PURE__ */ __name(() => {
+    }, "idFn");
     function useForceUpdate() {
-      if (isServerSide) {
-        return () => {
-        };
-      }
-      return (0, import_react.useReducer)((x) => x + 1, 0)[1];
+      return isServerSide ? idFn : (0, import_react.useReducer)((x) => x + 1, 0)[1];
     }
     __name(useForceUpdate, "useForceUpdate");
   }
@@ -16303,7 +16374,7 @@ var require_VisuallyHidden = __commonJS({
 });
 
 // ../../node_modules/@tamagui/visually-hidden/dist/cjs/index.js
-var require_cjs40 = __commonJS({
+var require_cjs41 = __commonJS({
   "../../node_modules/@tamagui/visually-hidden/dist/cjs/index.js"(exports2, module2) {
     "use strict";
     var __defProp3 = Object.defineProperty;
@@ -16323,6 +16394,75 @@ var require_cjs40 = __commonJS({
     var src_exports2 = {};
     module2.exports = __toCommonJS3(src_exports2);
     __reExport2(src_exports2, require_VisuallyHidden(), module2.exports);
+  }
+});
+
+// ../../node_modules/tamagui/dist/cjs/createTamagui.js
+var require_createTamagui = __commonJS({
+  "../../node_modules/tamagui/dist/cjs/createTamagui.js"(exports2, module2) {
+    "use strict";
+    var __defProp3 = Object.defineProperty;
+    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
+    var __getOwnPropNames3 = Object.getOwnPropertyNames;
+    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
+    var __export2 = /* @__PURE__ */ __name((target, all) => {
+      for (var name in all)
+        __defProp3(target, name, { get: all[name], enumerable: true });
+    }, "__export");
+    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
+      if (from && typeof from === "object" || typeof from === "function") {
+        for (let key of __getOwnPropNames3(from))
+          if (!__hasOwnProp3.call(to, key) && key !== except)
+            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
+      }
+      return to;
+    }, "__copyProps");
+    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
+    var createTamagui_exports = {};
+    __export2(createTamagui_exports, {
+      createTamagui: () => createTamagui
+    });
+    module2.exports = __toCommonJS3(createTamagui_exports);
+    var import_core = require("@tamagui/core-node");
+    var createTamagui = process.env.NODE_ENV !== "development" ? import_core.createTamagui : (conf) => {
+      const base = ["$0", "$1", "$2", "$3", "$4", "$5", "$6", "$7", "$8", "$9", "$10"];
+      const sizeTokenKeys = [...base, "$true"];
+      const hasKeys = /* @__PURE__ */ __name((expectedKeys, obj) => {
+        return expectedKeys.every((k) => typeof obj[k] !== "undefined");
+      }, "hasKeys");
+      const parsed = (0, import_core.createTamagui)(conf);
+      for (const name of ["size", "space"]) {
+        const tokenSet = parsed.tokensParsed[name];
+        if (!hasKeys(sizeTokenKeys, tokenSet)) {
+          throw new Error(`
+createTamagui() missing definition for expected tokens.${name}:
+
+Expected keys for: ${sizeTokenKeys.join(", ")}
+
+Received: ${Object.keys(tokenSet).join(", ")}
+
+`);
+        }
+      }
+      for (const name of ["radius", "zIndex"]) {
+        const tokenSet = parsed.tokensParsed[name];
+        const givenKeys = Object.keys(tokenSet);
+        const missing = givenKeys.find((k) => !parsed.tokensParsed.size[k]);
+        if (missing == null ? void 0 : missing.length) {
+          throw new Error(`
+createTamagui() invalid tokens.${name}:
+
+Expected subset of: ${Object.keys(parsed.tokensParsed.size).join(", ")}
+
+Received: ${givenKeys.join(", ")}
+
+Missing: ${missing}
+
+`);
+        }
+      }
+      return parsed;
+    };
   }
 });
 
@@ -16897,8 +17037,7 @@ var require_Group = __commonJS({
             borderRadius,
             ...restProps,
             children: wrapScroll(
-              !!scrollable,
-              !!vertical,
+              activeProps,
               (0, import_core.spacedChildren)({
                 direction: spaceDirection,
                 separator,
@@ -16913,15 +17052,15 @@ var require_Group = __commonJS({
     __name(createGroup, "createGroup");
     var YGroup = createGroup(true);
     var XGroup = createGroup(false);
-    var wrapScroll = /* @__PURE__ */ __name((scrollable, vertical, children) => {
+    var wrapScroll = /* @__PURE__ */ __name(({ scrollable, vertical, showScrollIndicator = false }, children) => {
       if (scrollable)
         return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react_native3.ScrollView, {
           ...vertical && {
-            showsVerticalScrollIndicator: false
+            showsVerticalScrollIndicator: showScrollIndicator
           },
           ...!vertical && {
             horizontal: true,
-            showsHorizontalScrollIndicator: false
+            showsHorizontalScrollIndicator: showScrollIndicator
           },
           children
         });
@@ -17281,7 +17420,7 @@ var require_TextArea = __commonJS({
 });
 
 // ../../node_modules/tamagui/dist/cjs/index.js
-var require_cjs41 = __commonJS({
+var require_cjs42 = __commonJS({
   "../../node_modules/tamagui/dist/cjs/index.js"(exports2, module2) {
     "use strict";
     var __defProp3 = Object.defineProperty;
@@ -17319,7 +17458,6 @@ var require_cjs41 = __commonJS({
       createComponent: () => import_core.createComponent,
       createFont: () => import_core.createFont,
       createShorthands: () => import_core.createShorthands,
-      createTamagui: () => import_core.createTamagui,
       createTheme: () => import_core.createTheme,
       createTokens: () => import_core.createTokens,
       createVariable: () => import_core.createVariable,
@@ -17355,6 +17493,7 @@ var require_cjs41 = __commonJS({
       updateTheme: () => import_core.updateTheme,
       useConstant: () => import_core.useConstant,
       useDefaultThemeName: () => import_core.useDefaultThemeName,
+      useDidFinishSSR: () => import_core.useDidFinishSSR,
       useEvent: () => import_core.useEvent,
       useGet: () => import_core.useGet,
       useIsMounted: () => import_core.useIsMounted,
@@ -17402,6 +17541,8 @@ var require_cjs41 = __commonJS({
     __reExport2(src_exports2, require_cjs38(), module2.exports);
     __reExport2(src_exports2, require_cjs39(), module2.exports);
     __reExport2(src_exports2, require_cjs40(), module2.exports);
+    __reExport2(src_exports2, require_cjs41(), module2.exports);
+    __reExport2(src_exports2, require_createTamagui(), module2.exports);
     __reExport2(src_exports2, require_TamaguiProvider(), module2.exports);
     __reExport2(src_exports2, require_viewTypes(), module2.exports);
     __reExport2(src_exports2, require_Anchor(), module2.exports);
@@ -17444,11 +17585,462 @@ var require_MyComponent = __commonJS({
       MyComponent: () => MyComponent
     });
     module2.exports = __toCommonJS3(MyComponent_exports);
-    var import_tamagui = require_cjs41();
+    var import_tamagui = require_cjs42();
     var MyComponent = (0, import_tamagui.styled)(import_tamagui.YStack, {
       name: "MyComponent",
       bc: "red"
     });
+  }
+});
+
+// ../../packages/ui/dist/cjs/BaseModal.js
+var require_BaseModal = __commonJS({
+  "../../packages/ui/dist/cjs/BaseModal.js"(exports2, module2) {
+    var import_jsx_runtime = require("react/jsx-runtime");
+    var __defProp3 = Object.defineProperty;
+    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
+    var __getOwnPropNames3 = Object.getOwnPropertyNames;
+    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
+    var __export2 = /* @__PURE__ */ __name((target, all) => {
+      for (var name in all)
+        __defProp3(target, name, { get: all[name], enumerable: true });
+    }, "__export");
+    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
+      if (from && typeof from === "object" || typeof from === "function") {
+        for (let key of __getOwnPropNames3(from))
+          if (!__hasOwnProp3.call(to, key) && key !== except)
+            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
+      }
+      return to;
+    }, "__copyProps");
+    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
+    var BaseModal_exports = {};
+    __export2(BaseModal_exports, {
+      BaseModal: () => BaseModal,
+      default: () => BaseModal_default
+    });
+    module2.exports = __toCommonJS3(BaseModal_exports);
+    var import_react = require("react");
+    var import_tamagui = require_cjs42();
+    var BaseModal = /* @__PURE__ */ __name(({
+      title,
+      isOpen,
+      onClose,
+      autoClose = true,
+      children,
+      buttons,
+      onConfirmClick,
+      onCancelClick,
+      message
+    }) => {
+      const [show, setShow] = (0, import_react.useState)(isOpen);
+      (0, import_react.useEffect)(() => {
+        setShow(isOpen);
+      }, [isOpen]);
+      const _onClose = (0, import_react.useCallback)(() => {
+        setShow(false);
+      }, []);
+      return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_tamagui.Dialog, {
+        modal: true,
+        open: show,
+        onOpenChange: (open) => {
+          if (!open) {
+            onClose == null ? void 0 : onClose();
+          }
+        },
+        children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_tamagui.Dialog.Portal, {
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_tamagui.Dialog.Overlay, {
+              animation: "quick",
+              o: 0.8,
+              enterStyle: { o: 0 },
+              exitStyle: { o: 0 }
+            }),
+            /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_tamagui.Dialog.Content, {
+              bordered: true,
+              elevate: true,
+              backgroundColor: "$backgroundLight",
+              animation: [
+                "quick",
+                {
+                  opacity: {
+                    overshootClamping: true
+                  }
+                }
+              ],
+              enterStyle: { x: 0, y: -20, opacity: 0, scale: 0.9 },
+              exitStyle: { x: 0, y: 10, opacity: 0, scale: 0.95 },
+              x: 0,
+              scale: 1,
+              opacity: 1,
+              y: 0,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_tamagui.Dialog.Title, {
+                  children: "Dialog title"
+                }),
+                /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_tamagui.Dialog.Description, {
+                  children: [
+                    "ghisdf sadihgf iads fiagsy ifc adsi",
+                    message
+                  ]
+                }),
+                children,
+                /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_tamagui.YStack, {
+                  mt: "$10",
+                  children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_tamagui.Button, {
+                    onPress: onConfirmClick,
+                    id: "modal-cancel-button",
+                    color: "secondary",
+                    children: "Click me"
+                  })
+                })
+              ]
+            }, "content")
+          ]
+        })
+      });
+    }, "BaseModal");
+    var BaseModal_default = BaseModal;
+  }
+});
+
+// ../../packages/ui/dist/cjs/BottomSheet/useBottomSheet.js
+var require_useBottomSheet = __commonJS({
+  "../../packages/ui/dist/cjs/BottomSheet/useBottomSheet.js"(exports2, module2) {
+    var import_jsx_runtime = require("react/jsx-runtime");
+    var __create2 = Object.create;
+    var __defProp3 = Object.defineProperty;
+    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
+    var __getOwnPropNames3 = Object.getOwnPropertyNames;
+    var __getProtoOf2 = Object.getPrototypeOf;
+    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
+    var __export2 = /* @__PURE__ */ __name((target, all) => {
+      for (var name in all)
+        __defProp3(target, name, { get: all[name], enumerable: true });
+    }, "__export");
+    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
+      if (from && typeof from === "object" || typeof from === "function") {
+        for (let key of __getOwnPropNames3(from))
+          if (!__hasOwnProp3.call(to, key) && key !== except)
+            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
+      }
+      return to;
+    }, "__copyProps");
+    var __toESM2 = /* @__PURE__ */ __name((mod, isNodeMode, target) => (target = mod != null ? __create2(__getProtoOf2(mod)) : {}, __copyProps3(
+      isNodeMode || !mod || !mod.__esModule ? __defProp3(target, "default", { value: mod, enumerable: true }) : target,
+      mod
+    )), "__toESM");
+    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
+    var useBottomSheet_exports = {};
+    __export2(useBottomSheet_exports, {
+      BottomSheetContext: () => BottomSheetContext,
+      BottomSheetContextProvider: () => BottomSheetContextProvider,
+      useBottomSheet: () => useBottomSheet
+    });
+    module2.exports = __toCommonJS3(useBottomSheet_exports);
+    var import_BottomSheet = require_BottomSheet();
+    var import_react = __toESM2(require("react"));
+    var import_react2 = require("react");
+    var useBottomSheetHook = /* @__PURE__ */ __name(() => {
+      const [bottomSheetProps, setBottomSheetProps] = (0, import_react2.useState)({});
+      const showBottomSheet = (0, import_react.useCallback)((props) => {
+        setBottomSheetProps({ ...props, isOpen: true });
+      }, []);
+      const hide = (0, import_react.useCallback)(() => {
+        setBottomSheetProps({});
+      }, []);
+      return {
+        bottomSheetProps,
+        showBottomSheet,
+        hide
+      };
+    }, "useBottomSheetHook");
+    var BottomSheetContext = import_react.default.createContext({});
+    var BottomSheetContextProvider = /* @__PURE__ */ __name(({ children }) => {
+      const bottomSheetHook = useBottomSheetHook();
+      const { children: bottomSheetChildren, ...otherProps } = bottomSheetHook.bottomSheetProps ?? {};
+      return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BottomSheetContext.Provider, {
+        value: bottomSheetHook,
+        children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, {
+          children: [
+            children,
+            /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_BottomSheet.BottomSheet, {
+              isGlobal: true,
+              ...otherProps,
+              children: bottomSheetChildren
+            })
+          ]
+        })
+      });
+    }, "BottomSheetContextProvider");
+    var useBottomSheet = /* @__PURE__ */ __name(() => {
+      return (0, import_react2.useContext)(BottomSheetContext);
+    }, "useBottomSheet");
+  }
+});
+
+// ../../packages/ui/dist/cjs/BottomSheet/BottomSheetFooter.js
+var require_BottomSheetFooter = __commonJS({
+  "../../packages/ui/dist/cjs/BottomSheet/BottomSheetFooter.js"(exports2, module2) {
+    var import_jsx_runtime = require("react/jsx-runtime");
+    var __defProp3 = Object.defineProperty;
+    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
+    var __getOwnPropNames3 = Object.getOwnPropertyNames;
+    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
+    var __export2 = /* @__PURE__ */ __name((target, all) => {
+      for (var name in all)
+        __defProp3(target, name, { get: all[name], enumerable: true });
+    }, "__export");
+    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
+      if (from && typeof from === "object" || typeof from === "function") {
+        for (let key of __getOwnPropNames3(from))
+          if (!__hasOwnProp3.call(to, key) && key !== except)
+            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
+      }
+      return to;
+    }, "__copyProps");
+    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
+    var BottomSheetFooter_exports = {};
+    __export2(BottomSheetFooter_exports, {
+      BottomSheetFooter: () => BottomSheetFooter,
+      default: () => BottomSheetFooter_default
+    });
+    module2.exports = __toCommonJS3(BottomSheetFooter_exports);
+    var import_react = require("react");
+    var import_tamagui = require_cjs42();
+    var import_useBottomSheet = require_useBottomSheet();
+    var BottomSheetFooter = /* @__PURE__ */ __name(({
+      buttons,
+      showCancelButton = true,
+      showConfirmButton = true,
+      cancelButtonProps,
+      confirmButtonProps,
+      onConfirm: onConfirmClick,
+      onCancel: onCancelClick,
+      confirmButtonText,
+      cancelButtonText,
+      autoClose = true,
+      isGlobal,
+      confirmButtonRef
+    }) => {
+      const [loadingButton, setLoadingButton] = (0, import_react.useState)();
+      const bottomSheet = (0, import_useBottomSheet.useBottomSheet)();
+      const { hide: hideBottomSheet } = bottomSheet;
+      const customButtons = (0, import_react.useMemo)(() => {
+        return buttons == null ? void 0 : buttons.map((button, index) => {
+          const buttonKey = "modal_button_" + index;
+          return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_tamagui.Button, {
+            disabled: !!loadingButton,
+            color: button.color,
+            onPress: button.onPress,
+            children: button.text
+          }, buttonKey);
+        });
+      }, [buttons, loadingButton]);
+      const _onCancel = (0, import_react.useCallback)(async () => {
+        try {
+          setLoadingButton("default_cancel");
+          await (onCancelClick == null ? void 0 : onCancelClick());
+          if (isGlobal) {
+            bottomSheet.hide();
+          }
+        } finally {
+          setLoadingButton(void 0);
+        }
+      }, [bottomSheet, onCancelClick]);
+      const _onConfirm = (0, import_react.useCallback)(async () => {
+        console.log("footer confirm " + onConfirmClick);
+        try {
+          setLoadingButton("default_confirm");
+          const result = await (onConfirmClick == null ? void 0 : onConfirmClick());
+          if (result && autoClose) {
+            if (isGlobal) {
+              hideBottomSheet();
+            }
+          }
+        } finally {
+          setLoadingButton(void 0);
+        }
+      }, [autoClose, hideBottomSheet, isGlobal, onConfirmClick]);
+      return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_tamagui.XStack, {
+        px: "$5",
+        backgroundColor: "$backgroundLight",
+        py: "$5",
+        children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_tamagui.XStack, {
+          children: [
+            !!showCancelButton && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_tamagui.Button, {
+              id: "sheet-cancel-button",
+              disabled: !!loadingButton,
+              color: "secondary",
+              onPress: _onCancel,
+              ...cancelButtonProps,
+              children: "cancel"
+            }),
+            !!showConfirmButton && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_tamagui.Button, {
+              ml: "$5",
+              id: "sheet-confirm-button",
+              disabled: !!loadingButton,
+              color: "primary",
+              ref: confirmButtonRef,
+              onPress: _onConfirm,
+              ...confirmButtonProps,
+              children: "confirm"
+            }),
+            customButtons
+          ]
+        })
+      });
+    }, "BottomSheetFooter");
+    var BottomSheetFooter_default = BottomSheetFooter;
+  }
+});
+
+// ../../packages/ui/dist/cjs/BottomSheet/BottomSheet.js
+var require_BottomSheet = __commonJS({
+  "../../packages/ui/dist/cjs/BottomSheet/BottomSheet.js"(exports2, module2) {
+    var import_jsx_runtime = require("react/jsx-runtime");
+    var __create2 = Object.create;
+    var __defProp3 = Object.defineProperty;
+    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
+    var __getOwnPropNames3 = Object.getOwnPropertyNames;
+    var __getProtoOf2 = Object.getPrototypeOf;
+    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
+    var __export2 = /* @__PURE__ */ __name((target, all) => {
+      for (var name in all)
+        __defProp3(target, name, { get: all[name], enumerable: true });
+    }, "__export");
+    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
+      if (from && typeof from === "object" || typeof from === "function") {
+        for (let key of __getOwnPropNames3(from))
+          if (!__hasOwnProp3.call(to, key) && key !== except)
+            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
+      }
+      return to;
+    }, "__copyProps");
+    var __toESM2 = /* @__PURE__ */ __name((mod, isNodeMode, target) => (target = mod != null ? __create2(__getProtoOf2(mod)) : {}, __copyProps3(
+      isNodeMode || !mod || !mod.__esModule ? __defProp3(target, "default", { value: mod, enumerable: true }) : target,
+      mod
+    )), "__toESM");
+    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
+    var BottomSheet_exports = {};
+    __export2(BottomSheet_exports, {
+      BottomSheet: () => BottomSheet
+    });
+    module2.exports = __toCommonJS3(BottomSheet_exports);
+    var import_react = require("react");
+    var import_tamagui = require_cjs42();
+    var import_BottomSheetFooter = __toESM2(require_BottomSheetFooter());
+    var BottomSheet = /* @__PURE__ */ __name(({
+      title,
+      onClose,
+      children,
+      snapPoints = [85],
+      snapPoint = 0,
+      isOpen,
+      autoClose,
+      isLoading,
+      showCancelButton = true,
+      showConfirmButton = true,
+      cancelButtonProps,
+      confirmButtonProps,
+      buttons,
+      onConfirm,
+      onCancel,
+      isGlobal,
+      confirmButtonRef
+    }) => {
+      const [position, setPosition] = (0, import_react.useState)(snapPoint);
+      const footerProps = {
+        showCancelButton,
+        showConfirmButton,
+        cancelButtonProps,
+        confirmButtonProps,
+        buttons,
+        onConfirm,
+        onCancel,
+        confirmButtonRef
+      };
+      (0, import_react.useEffect)(() => {
+        setPosition(snapPoint || 0);
+      }, [snapPoint]);
+      const dummyBottomSize = (0, import_react.useMemo)(() => {
+        const percent = 100 - snapPoints[position];
+        return percent + "%";
+      }, [snapPoints, position]);
+      const onOpenChange = (0, import_react.useCallback)(
+        (open) => {
+          if (!open) {
+            onClose == null ? void 0 : onClose();
+          }
+        },
+        [onClose]
+      );
+      return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_tamagui.Sheet, {
+        open: !!isOpen,
+        snapPoints,
+        position,
+        onPositionChange: setPosition,
+        modal: true,
+        dismissOnOverlayPress: false,
+        dismissOnSnapToBottom: true,
+        handleDisableScroll: false,
+        defaultOpen: false,
+        onOpenChange,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_tamagui.Sheet.Overlay, {
+            opacity: isOpen ? 0.8 : 0
+          }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_tamagui.Sheet.Frame, {
+            scale: 1,
+            opacity: 1,
+            pt: "$5",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_tamagui.Label, {
+                mx: "$5",
+                children: title
+              }),
+              !!isOpen && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_tamagui.Sheet.ScrollView, {
+                pb: "$10",
+                px: "$5",
+                children
+              }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_BottomSheetFooter.default, {
+                isGlobal,
+                ...footerProps
+              }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_tamagui.XStack, {
+                id: "dummy",
+                h: dummyBottomSize
+              })
+            ]
+          })
+        ]
+      });
+    }, "BottomSheet");
+  }
+});
+
+// ../../packages/ui/dist/cjs/BottomSheet/index.js
+var require_BottomSheet2 = __commonJS({
+  "../../packages/ui/dist/cjs/BottomSheet/index.js"(exports2, module2) {
+    var __defProp3 = Object.defineProperty;
+    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
+    var __getOwnPropNames3 = Object.getOwnPropertyNames;
+    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
+    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
+      if (from && typeof from === "object" || typeof from === "function") {
+        for (let key of __getOwnPropNames3(from))
+          if (!__hasOwnProp3.call(to, key) && key !== except)
+            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
+      }
+      return to;
+    }, "__copyProps");
+    var __reExport2 = /* @__PURE__ */ __name((target, mod, secondTarget) => (__copyProps3(target, mod, "default"), secondTarget && __copyProps3(secondTarget, mod, "default")), "__reExport");
+    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
+    var BottomSheet_exports = {};
+    module2.exports = __toCommonJS3(BottomSheet_exports);
+    __reExport2(BottomSheet_exports, require_BottomSheet(), module2.exports);
+    __reExport2(BottomSheet_exports, require_useBottomSheet(), module2.exports);
   }
 });
 
@@ -17469,5 +18061,7 @@ var __reExport = /* @__PURE__ */ __name((target, mod, secondTarget) => (__copyPr
 var __toCommonJS2 = /* @__PURE__ */ __name((mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod), "__toCommonJS");
 var src_exports = {};
 module.exports = __toCommonJS2(src_exports);
-__reExport(src_exports, require_cjs41(), module.exports);
+__reExport(src_exports, require_cjs42(), module.exports);
 __reExport(src_exports, require_MyComponent(), module.exports);
+__reExport(src_exports, require_BaseModal(), module.exports);
+__reExport(src_exports, require_BottomSheet2(), module.exports);

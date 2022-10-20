@@ -7,14 +7,16 @@ import { Provider } from 'app/provider'
 import Head from 'next/head'
 import React, { useMemo } from 'react'
 import type { SolitoAppProps } from 'solito'
+
 import 'raf/polyfill'
+import { ModalContextProvider } from 'app/hooks/useModal'
 
 function MyApp({ Component, pageProps }: SolitoAppProps) {
   const [theme, setTheme] = useRootTheme()
 
   const contents = useMemo(() => {
     return <Component {...pageProps} />
-  }, [pageProps])
+  }, [Component, pageProps])
 
   return (
     <>
@@ -24,9 +26,11 @@ function MyApp({ Component, pageProps }: SolitoAppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NextThemeProvider onChangeTheme={setTheme}>
-        <Provider disableRootThemeClass defaultTheme={theme}>
-          {contents}
-        </Provider>
+        {/* <ReduxProvider store={store}> */}
+          <Provider disableRootThemeClass defaultTheme={theme}>
+            <ModalContextProvider>{contents}</ModalContextProvider>
+          </Provider>
+        {/* </ReduxProvider> */}
       </NextThemeProvider>
     </>
   )

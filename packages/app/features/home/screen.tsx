@@ -1,14 +1,39 @@
-import { Anchor, Button, H1, Paragraph, Separator, XStack, YStack, Sheet, Image } from '@my/ui'
+import {
+  Anchor,
+  Button,
+  H1,
+  Paragraph,
+  Separator,
+  XStack,
+  YStack,
+  Sheet,
+  Image,
+  Label,
+  Input,
+} from '@my/ui'
 import { ChevronDown, ChevronUp } from '@tamagui/feather-icons'
+import { useModal } from 'app/hooks/useModal'
+import { appSelectors } from 'app/redux'
+import { loadingActions } from 'app/redux/loading/reducer'
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useLink } from 'solito/link'
 import image from '../../assets/favicon.png'
 
+const ModalContent = () => {
+  const isLoading = useSelector(appSelectors.loading.isLoadingSelector)
+
+  return <Label>IS LOADING: {String(isLoading)}</Label>
+}
 export function HomeScreen() {
   const linkProps = useLink({
     href: '/user/nate',
   })
 
+  const modal = useModal()
+  const dispatch = useDispatch()
+
+  console.log('modal is', modal)
   return (
     <YStack f={1} jc="center" ai="center" p="$4" space>
       <YStack space="$4" maw={600}>
@@ -28,7 +53,18 @@ export function HomeScreen() {
           <Anchor href="https://github.com/tamagui/tamagui" target="_blank" rel="noreferrer">
             on Github
           </Anchor>
-          .
+          {/* <Button
+            onClick={() => {
+              dispatch(loadingActions.showLoading(true))
+              modal.showModal({
+                title: 'Modal titlone',
+                children: <ModalContent />,
+                onConfirmClick: modal.hideModal,
+              })
+            }}
+          >
+            OPEN MODAL
+          </Button> */}
         </Paragraph>
       </YStack>
 
@@ -62,8 +98,30 @@ function SheetDemo() {
         dismissOnSnapToBottom
       >
         <Sheet.Overlay />
-        <Sheet.Frame ai="center" jc="center">
+        <Sheet.Frame>
           <Sheet.Handle />
+          <YStack
+            position="absolute"
+            left={0}
+            top={0}
+            right={0}
+            bottom={'20%'}
+            overflow="hidden"
+            bw={1}
+          >
+            <YStack px="$3" height={'80%'} overflow="scroll" bw={1} boc="yellow">
+              <Input my="$5" bc="red" />
+              <Input my="$5" bc="red" />
+              <Input my="$5" bc="red" />
+              <Input my="$5" bc="red" />
+              <Input my="$5" bc="red" />
+              <Input my="$5" bc="red" />
+              <Input my="$5" bc="red" />
+              <Input my="$5" bc="red" />
+              <Input my="$5" bc="red" />
+              <Input my="$5" bc="red" />
+            </YStack>
+          </YStack>
           <Button
             size="$6"
             circular

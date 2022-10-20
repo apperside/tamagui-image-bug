@@ -1684,8 +1684,9 @@ var require_Stacks = __commonJS({
         num = +val;
       }
       if (process.env.NODE_ENV === "development") {
-        if (isNaN(num))
+        if (num !== null && isNaN(num)) {
           console.warn("NaN shadow", num, val);
+        }
       }
       const [height, shadowRadius] = [Math.round(num / 4 + 1), Math.round(num / 2 + 2)];
       const shadow = {
@@ -2207,7 +2208,7 @@ var require_GorhomPortal = __commonJS({
     var PortalProvider = (0, import_react2.memo)(PortalProviderComponent);
     PortalProvider.displayName = "PortalProvider";
     var PortalHostComponent = /* @__PURE__ */ __name(({ name }) => {
-      const isServer2 = (0, import_core2.useIsSSR)();
+      const isServer2 = !(0, import_core2.useDidFinishSSR)();
       const state = usePortalState(name);
       const { registerHost: registerHost2, deregisterHost: deregisterHost2 } = usePortal(name);
       (0, import_react2.useEffect)(() => {
@@ -6844,13 +6845,13 @@ var require_concatClassName = __commonJS({
     });
     module2.exports = __toCommonJS3(concatClassName_exports);
     function concatClassName(_cn) {
-      const cnOrPropObjcet = arguments;
+      const args = arguments;
       const usedPrefixes = [];
       let final = "";
-      const len = cnOrPropObjcet.length;
+      const len = args.length;
       let propObjects = null;
       for (let x = len; x >= 0; x--) {
-        const cns = cnOrPropObjcet[x];
+        const cns = args[x];
         if (!cns)
           continue;
         if (!Array.isArray(cns) && typeof cns !== "string") {
@@ -7120,39 +7121,6 @@ var require_types2 = __commonJS({
   }
 });
 
-// ../../node_modules/@tamagui/helpers/dist/cjs/log.js
-var require_log = __commonJS({
-  "../../node_modules/@tamagui/helpers/dist/cjs/log.js"(exports2, module2) {
-    "use strict";
-    var __defProp3 = Object.defineProperty;
-    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
-    var __getOwnPropNames3 = Object.getOwnPropertyNames;
-    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
-    var __export3 = /* @__PURE__ */ __name((target, all) => {
-      for (var name in all)
-        __defProp3(target, name, { get: all[name], enumerable: true });
-    }, "__export");
-    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
-      if (from && typeof from === "object" || typeof from === "function") {
-        for (let key of __getOwnPropNames3(from))
-          if (!__hasOwnProp3.call(to, key) && key !== except)
-            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
-      }
-      return to;
-    }, "__copyProps");
-    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
-    var log_exports = {};
-    __export3(log_exports, {
-      log: () => log
-    });
-    module2.exports = __toCommonJS3(log_exports);
-    var log = /* @__PURE__ */ __name((...args) => {
-      console.log(...args);
-      return args[0];
-    }, "log");
-  }
-});
-
 // ../../node_modules/@tamagui/simple-hash/dist/cjs/index.js
 var require_cjs21 = __commonJS({
   "../../node_modules/@tamagui/simple-hash/dist/cjs/index.js"(exports2, module2) {
@@ -7227,7 +7195,6 @@ var require_cjs22 = __commonJS({
     __reExport2(src_exports2, require_concatClassName(), module2.exports);
     __reExport2(src_exports2, require_validStyleProps(), module2.exports);
     __reExport2(src_exports2, require_types2(), module2.exports);
-    __reExport2(src_exports2, require_log(), module2.exports);
     __reExport2(src_exports2, require_cjs21(), module2.exports);
   }
 });
@@ -8271,7 +8238,7 @@ var require_ListItem = __commonJS({
               Boolean(title || subTitle) ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_stacks.YStack, {
                 flex: 1,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Title, {
+                  noTextWrap === "all" ? title : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Title, {
                     size,
                     children: title
                   }),
@@ -8281,7 +8248,7 @@ var require_ListItem = __commonJS({
                         flex: true,
                         size: spaceSize * 0.333
                       }),
-                      typeof subTitle === "string" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Subtitle, {
+                      typeof subTitle === "string" && noTextWrap !== "all" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Subtitle, {
                         size: subtitleSize,
                         children: subTitle
                       }) : subTitle
@@ -16201,8 +16168,114 @@ var require_cjs38 = __commonJS({
   }
 });
 
-// ../../node_modules/@tamagui/use-force-update/dist/cjs/index.js
+// ../../node_modules/@tamagui/constants/dist/cjs/constants.js
+var require_constants4 = __commonJS({
+  "../../node_modules/@tamagui/constants/dist/cjs/constants.js"(exports2, module2) {
+    "use strict";
+    var __defProp3 = Object.defineProperty;
+    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
+    var __getOwnPropNames3 = Object.getOwnPropertyNames;
+    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
+    var __export3 = /* @__PURE__ */ __name((target, all) => {
+      for (var name in all)
+        __defProp3(target, name, { get: all[name], enumerable: true });
+    }, "__export");
+    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
+      if (from && typeof from === "object" || typeof from === "function") {
+        for (let key of __getOwnPropNames3(from))
+          if (!__hasOwnProp3.call(to, key) && key !== except)
+            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
+      }
+      return to;
+    }, "__copyProps");
+    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
+    var constants_exports = {};
+    __export3(constants_exports, {
+      isChrome: () => isChrome2,
+      isClient: () => isClient2,
+      isRSC: () => isRSC,
+      isServer: () => isServer2,
+      isTouchable: () => isTouchable2,
+      isWeb: () => isWeb2,
+      isWebTouchable: () => isWebTouchable2,
+      isWindowDefined: () => isWindowDefined,
+      useIsomorphicLayoutEffect: () => useIsomorphicLayoutEffect2
+    });
+    module2.exports = __toCommonJS3(constants_exports);
+    var import_react = require("react");
+    var import_meta = {};
+    var isWeb2 = process.env.TAMAGUI_TARGET === "web";
+    var isWindowDefined = typeof window !== "undefined";
+    var isServer2 = isWeb2 && !isWindowDefined;
+    var isClient2 = isWeb2 && isWindowDefined;
+    var isRSC = process.env.ENABLE_RSC ? import_meta.env ? import_meta.env.SSR : false : false;
+    var idFn = /* @__PURE__ */ __name(() => {
+    }, "idFn");
+    var useIsomorphicLayoutEffect2 = isRSC ? idFn : isServer2 ? import_react.useEffect : import_react.useLayoutEffect;
+    var isChrome2 = typeof navigator !== "undefined" && /Chrome/.test(navigator.userAgent || "");
+    var isWebTouchable2 = isClient2 && "ontouchstart" in window;
+    var isTouchable2 = !isWeb2 || isWebTouchable2;
+    if (process.env.NODE_ENV === "development") {
+      if (!process.env.TAMAGUI_TARGET) {
+        console.warn(`Must set TAMAGUI_TARGET to "web" or "native"`);
+      } else if (isClient2 && process.env.TAMAGUI_TARGET !== "web" && process.env.TAMAGUI_IGNORE_TARGET !== "1") {
+        console.warn(
+          `Must set TAMAGUI_TARGET to "web" for web apps - if you have window defined outside of the browser, set TAMAGUI_IGNORE_TARGET=1 to hide this`
+        );
+      }
+    }
+  }
+});
+
+// ../../node_modules/@tamagui/use-window-dimensions/dist/cjs/index.js
 var require_cjs39 = __commonJS({
+  "../../node_modules/@tamagui/use-window-dimensions/dist/cjs/index.js"(exports2, module2) {
+    "use strict";
+    var __defProp3 = Object.defineProperty;
+    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
+    var __getOwnPropNames3 = Object.getOwnPropertyNames;
+    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
+    var __export3 = /* @__PURE__ */ __name((target, all) => {
+      for (var name in all)
+        __defProp3(target, name, { get: all[name], enumerable: true });
+    }, "__export");
+    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
+      if (from && typeof from === "object" || typeof from === "function") {
+        for (let key of __getOwnPropNames3(from))
+          if (!__hasOwnProp3.call(to, key) && key !== except)
+            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
+      }
+      return to;
+    }, "__copyProps");
+    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
+    var src_exports2 = {};
+    __export3(src_exports2, {
+      useWindowDimensions: () => useWindowDimensions
+    });
+    module2.exports = __toCommonJS3(src_exports2);
+    var import_constants = require_constants4();
+    var import_react = require("react");
+    var import_react_native3 = require("react-native-web-lite");
+    var initialValue = {
+      fontScale: 1,
+      height: 800,
+      width: 600,
+      scale: 1
+    };
+    function useWindowDimensions() {
+      const [state, setState] = (0, import_react.useState)(initialValue);
+      const current = (0, import_react_native3.useWindowDimensions)();
+      (0, import_constants.useIsomorphicLayoutEffect)(() => {
+        setState(current);
+      }, [current.height, current.width, current.fontScale, current.scale]);
+      return state;
+    }
+    __name(useWindowDimensions, "useWindowDimensions");
+  }
+});
+
+// ../../node_modules/@tamagui/use-force-update/dist/cjs/index.js
+var require_cjs40 = __commonJS({
   "../../node_modules/@tamagui/use-force-update/dist/cjs/index.js"(exports2, module2) {
     "use strict";
     var __defProp3 = Object.defineProperty;
@@ -16230,12 +16303,10 @@ var require_cjs39 = __commonJS({
     module2.exports = __toCommonJS3(src_exports2);
     var import_react = require("react");
     var isServerSide = process.env.TAMAGUI_TARGET === "web" && typeof window === "undefined";
+    var idFn = /* @__PURE__ */ __name(() => {
+    }, "idFn");
     function useForceUpdate() {
-      if (isServerSide) {
-        return () => {
-        };
-      }
-      return (0, import_react.useReducer)((x) => x + 1, 0)[1];
+      return isServerSide ? idFn : (0, import_react.useReducer)((x) => x + 1, 0)[1];
     }
     __name(useForceUpdate, "useForceUpdate");
   }
@@ -16304,7 +16375,7 @@ var require_VisuallyHidden = __commonJS({
 });
 
 // ../../node_modules/@tamagui/visually-hidden/dist/cjs/index.js
-var require_cjs40 = __commonJS({
+var require_cjs41 = __commonJS({
   "../../node_modules/@tamagui/visually-hidden/dist/cjs/index.js"(exports2, module2) {
     "use strict";
     var __defProp3 = Object.defineProperty;
@@ -16324,6 +16395,75 @@ var require_cjs40 = __commonJS({
     var src_exports2 = {};
     module2.exports = __toCommonJS3(src_exports2);
     __reExport2(src_exports2, require_VisuallyHidden(), module2.exports);
+  }
+});
+
+// ../../node_modules/tamagui/dist/cjs/createTamagui.js
+var require_createTamagui = __commonJS({
+  "../../node_modules/tamagui/dist/cjs/createTamagui.js"(exports2, module2) {
+    "use strict";
+    var __defProp3 = Object.defineProperty;
+    var __getOwnPropDesc3 = Object.getOwnPropertyDescriptor;
+    var __getOwnPropNames3 = Object.getOwnPropertyNames;
+    var __hasOwnProp3 = Object.prototype.hasOwnProperty;
+    var __export3 = /* @__PURE__ */ __name((target, all) => {
+      for (var name in all)
+        __defProp3(target, name, { get: all[name], enumerable: true });
+    }, "__export");
+    var __copyProps3 = /* @__PURE__ */ __name((to, from, except, desc) => {
+      if (from && typeof from === "object" || typeof from === "function") {
+        for (let key of __getOwnPropNames3(from))
+          if (!__hasOwnProp3.call(to, key) && key !== except)
+            __defProp3(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc3(from, key)) || desc.enumerable });
+      }
+      return to;
+    }, "__copyProps");
+    var __toCommonJS3 = /* @__PURE__ */ __name((mod) => __copyProps3(__defProp3({}, "__esModule", { value: true }), mod), "__toCommonJS");
+    var createTamagui_exports = {};
+    __export3(createTamagui_exports, {
+      createTamagui: () => createTamagui
+    });
+    module2.exports = __toCommonJS3(createTamagui_exports);
+    var import_core2 = require("@tamagui/core-node");
+    var createTamagui = process.env.NODE_ENV !== "development" ? import_core2.createTamagui : (conf) => {
+      const base = ["$0", "$1", "$2", "$3", "$4", "$5", "$6", "$7", "$8", "$9", "$10"];
+      const sizeTokenKeys = [...base, "$true"];
+      const hasKeys = /* @__PURE__ */ __name((expectedKeys, obj) => {
+        return expectedKeys.every((k) => typeof obj[k] !== "undefined");
+      }, "hasKeys");
+      const parsed = (0, import_core2.createTamagui)(conf);
+      for (const name of ["size", "space"]) {
+        const tokenSet = parsed.tokensParsed[name];
+        if (!hasKeys(sizeTokenKeys, tokenSet)) {
+          throw new Error(`
+createTamagui() missing definition for expected tokens.${name}:
+
+Expected keys for: ${sizeTokenKeys.join(", ")}
+
+Received: ${Object.keys(tokenSet).join(", ")}
+
+`);
+        }
+      }
+      for (const name of ["radius", "zIndex"]) {
+        const tokenSet = parsed.tokensParsed[name];
+        const givenKeys = Object.keys(tokenSet);
+        const missing = givenKeys.find((k) => !parsed.tokensParsed.size[k]);
+        if (missing == null ? void 0 : missing.length) {
+          throw new Error(`
+createTamagui() invalid tokens.${name}:
+
+Expected subset of: ${Object.keys(parsed.tokensParsed.size).join(", ")}
+
+Received: ${givenKeys.join(", ")}
+
+Missing: ${missing}
+
+`);
+        }
+      }
+      return parsed;
+    };
   }
 });
 
@@ -16898,8 +17038,7 @@ var require_Group = __commonJS({
             borderRadius,
             ...restProps,
             children: wrapScroll(
-              !!scrollable,
-              !!vertical,
+              activeProps,
               (0, import_core2.spacedChildren)({
                 direction: spaceDirection,
                 separator,
@@ -16914,15 +17053,15 @@ var require_Group = __commonJS({
     __name(createGroup, "createGroup");
     var YGroup = createGroup(true);
     var XGroup = createGroup(false);
-    var wrapScroll = /* @__PURE__ */ __name((scrollable, vertical, children) => {
+    var wrapScroll = /* @__PURE__ */ __name(({ scrollable, vertical, showScrollIndicator = false }, children) => {
       if (scrollable)
         return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react_native3.ScrollView, {
           ...vertical && {
-            showsVerticalScrollIndicator: false
+            showsVerticalScrollIndicator: showScrollIndicator
           },
           ...!vertical && {
             horizontal: true,
-            showsHorizontalScrollIndicator: false
+            showsHorizontalScrollIndicator: showScrollIndicator
           },
           children
         });
@@ -17317,7 +17456,6 @@ __export2(src_exports, {
   createComponent: () => import_core.createComponent,
   createFont: () => import_core.createFont,
   createShorthands: () => import_core.createShorthands,
-  createTamagui: () => import_core.createTamagui,
   createTheme: () => import_core.createTheme,
   createTokens: () => import_core.createTokens,
   createVariable: () => import_core.createVariable,
@@ -17353,6 +17491,7 @@ __export2(src_exports, {
   updateTheme: () => import_core.updateTheme,
   useConstant: () => import_core.useConstant,
   useDefaultThemeName: () => import_core.useDefaultThemeName,
+  useDidFinishSSR: () => import_core.useDidFinishSSR,
   useEvent: () => import_core.useEvent,
   useGet: () => import_core.useGet,
   useIsMounted: () => import_core.useIsMounted,
@@ -17400,6 +17539,8 @@ __reExport(src_exports, require_cjs11(), module.exports);
 __reExport(src_exports, require_cjs38(), module.exports);
 __reExport(src_exports, require_cjs39(), module.exports);
 __reExport(src_exports, require_cjs40(), module.exports);
+__reExport(src_exports, require_cjs41(), module.exports);
+__reExport(src_exports, require_createTamagui(), module.exports);
 __reExport(src_exports, require_TamaguiProvider(), module.exports);
 __reExport(src_exports, require_viewTypes(), module.exports);
 __reExport(src_exports, require_Anchor(), module.exports);

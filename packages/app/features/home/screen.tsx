@@ -10,12 +10,14 @@ import {
   Image,
   Label,
   Input,
+  ScrollView,
 } from '@my/ui'
 import { ChevronDown, ChevronUp } from '@tamagui/feather-icons'
 import { useModal } from 'app/hooks/useModal'
 import { appSelectors } from 'app/redux'
 import { loadingActions } from 'app/redux/loading/reducer'
 import React, { useState } from 'react'
+import { KeyboardAvoidingView } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLink } from 'solito/link'
 import image from '../../assets/favicon.png'
@@ -105,21 +107,35 @@ function SheetDemo() {
             left={0}
             top={0}
             right={0}
-            bottom={'20%'}
+            bottom={'20%'}//bottom must be 100 minus the current snap point percentage, in this case is 80
             overflow="hidden"
             bw={1}
           >
             <YStack px="$3" height={'80%'} overflow="scroll" bw={1} boc="yellow">
-              <Input my="$5" bc="red" />
-              <Input my="$5" bc="red" />
-              <Input my="$5" bc="red" />
-              <Input my="$5" bc="red" />
-              <Input my="$5" bc="red" />
-              <Input my="$5" bc="red" />
-              <Input my="$5" bc="red" />
-              <Input my="$5" bc="red" />
-              <Input my="$5" bc="red" />
-              <Input my="$5" bc="red" />
+              <Sheet.ScrollView>
+                  <KeyboardAvoidingView>
+                    <Label>1</Label>
+                    <Input my="$5" bc="red" />
+                    <Label>2</Label>
+                    <Input my="$5" bc="red" />
+                    <Label>3</Label>
+                    <Input my="$5" bc="red" />
+                    <Label>4</Label>
+                    <Input my="$5" bc="red" />
+                    <Label>5</Label>
+                    <Input my="$5" bc="red" />
+                    <Label>6</Label>
+                    <Input my="$5" bc="red" />
+                    <Label>7</Label>
+                    <Input my="$5" bc="red" />
+                    <Label>8</Label>
+                    <Input my="$5" bc="red" />
+                    <Label>9</Label>
+                    <Input my="$5" bc="red" />
+                    <Label>10</Label>
+                    <Input my="$5" bc="red" />
+                  </KeyboardAvoidingView>
+              </Sheet.ScrollView>
             </YStack>
           </YStack>
           <Button

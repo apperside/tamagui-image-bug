@@ -21,6 +21,7 @@ import { KeyboardAvoidingView } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLink } from 'solito/link'
 import image from '../../assets/favicon.png'
+import SearchBox from './SearchBox'
 
 const ModalContent = () => {
   const isLoading = useSelector(appSelectors.loading.isLoadingSelector)
@@ -40,6 +41,8 @@ export function HomeScreen() {
     <YStack f={1} jc="center" ai="center" p="$4" space>
       <YStack space="$4" maw={600}>
         <H1 ta="center">Welcome to Tamagui.</H1>
+        <SearchBox  width="100%"/>
+        <SearchBox px={30} width="100%"/>
         <Paragraph ta="center">
           Here's a basic starter to show navigating from one screen to another. This screen uses the
           same code on Next.js and React Native.
